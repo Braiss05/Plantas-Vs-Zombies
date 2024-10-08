@@ -6,30 +6,31 @@ public class Zombie {
     private int vida;
     private int damage;
     private int velocidad;
+    private String tipo;  // Nuevo atributo tipo de zombie
     
-    //private para que no haya errores y para que mo se mezclen valaores
     private static int numeroTotalZombies = 0;
     
     // Constructor paramétrico
-    public Zombie(String nombre, int vida, int damage, int velocidad) {
+    public Zombie(String nombre, int vida, int damage, int velocidad, String tipo) {
         this.nombre = nombre;
         this.vida = vida;
         this.damage = damage;
         this.velocidad = velocidad;
+        this.tipo = tipo;
         numeroTotalZombies++;  // Incrementamos el contador al crear un nuevo zombie
     }
 
     // Constructor por defecto 
     public Zombie() {
-        this("Zombie por defecto", 100, 10, 5);  // Valores por defecto
+        this("Zombie por defecto", 100, 10, 5, "Comun");  // Valores por defecto y tipo "Común"
     }
     
     // Constructor copia 
     public Zombie(Zombie otroZombie) {
-        this(otroZombie.nombre, otroZombie.vida, otroZombie.damage, otroZombie.velocidad);
+        this(otroZombie.nombre, otroZombie.vida, otroZombie.damage, otroZombie.velocidad, otroZombie.tipo);
     }
     
-    // gets y sets 
+    // Getters y Setters 
     public String getNombre() {
         return nombre;
     }
@@ -60,8 +61,16 @@ public class Zombie {
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
-    } 
-    
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     // Método para obtener el número total de zombies creados
     public static int getNumeroTotalZombies() {
         return numeroTotalZombies;
@@ -69,6 +78,7 @@ public class Zombie {
     
     // Método para mostrar la información del zombie
     public void mostrarInfo() {
-        System.out.println("Nombre: " + nombre + ", Vida: " + vida + ", Damage: " + damage + ", Velocidad: " + velocidad);
+        System.out.println("Nombre: " + nombre + ", Vida: " + vida + ", Damage: " + damage + 
+                           ", Velocidad: " + velocidad + ", Tipo: " + tipo);
     }
 }
