@@ -1,4 +1,5 @@
 package proyectobrais;
+import proyectobrais.model.*;
 
 import proyectobrais.model.Zombie;
 import proyectobrais.model.Planta;
