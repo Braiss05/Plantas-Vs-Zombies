@@ -1,4 +1,4 @@
-package proyectobrais;
+package proyectobrais.model;
 
 public class Zombie {
     
