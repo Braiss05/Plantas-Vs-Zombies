@@ -1,4 +1,5 @@
 package proyectobrais;
+import proyectobrais.model.*;
 
 public class ProyectoBrais {
 
