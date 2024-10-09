@@ -1,9 +1,6 @@
 package proyectobrais;
 import proyectobrais.model.*;
 
-import proyectobrais.model.Zombie;
-import proyectobrais.model.Planta;
-
 public class ProyectoBrais {
 
     public static void main(String[] args) {
