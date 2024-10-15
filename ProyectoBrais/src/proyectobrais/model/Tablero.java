@@ -68,12 +68,38 @@ public class Tablero {
                         terreno[i][j - 1] = terreno[i][j];  // Mueve el zombie a la izquierda
                         terreno[i][j] = null;  // Limpia la posición anterior
                     } else if (terreno[i][j - 1] instanceof Planta) {
-                        // Si hay una planta en la izquierda, podrías implementar ataque o interacción
+                        // Si hay una planta en la izquierda, el zombie ataca
                         System.out.println("Zombie ataca a la planta en (" + i + ", " + (j - 1) + ")");
                         // Aquí podrías reducir la vida de la planta o aplicar la lógica que quieras
                     }
                 }
             }
         }
+    }
+
+    // Obtener la entidad en una posición específica del tablero
+    public Object getEntidad(int fila, int columna) {
+        if (esPosicionValida(fila, columna)) {
+            return terreno[fila][columna];
+        }
+        return null;
+    }
+
+    // Eliminar una entidad del tablero (se usa cuando un zombie muere)
+    public void eliminarEntidad(int fila, int columna) {
+        if (esPosicionValida(fila, columna)) {
+            terreno[fila][columna] = null;
+            System.out.println("Entidad eliminada en (" + fila + ", " + columna + ")");
+        }
+    }
+
+    // Metodos set y get para qu pueda funcionar la clae guerra
+    
+    public int getFilas() {
+        return filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
     }
 }
