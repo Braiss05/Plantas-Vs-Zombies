@@ -60,7 +60,6 @@ public class Tablero {
 
     // Método para mover todos los zombies en el tablero hacia la izquierda
     public void moverZombies() {
-        // Iteramos desde la columna 1 hasta la última, moviendo los zombies hacia la izquierda
         for (int i = 0; i < filas; i++) {
             for (int j = 1; j < columnas; j++) {  // Empezamos desde la segunda columna
                 if (terreno[i][j] instanceof Zombie) {
@@ -68,12 +67,35 @@ public class Tablero {
                         terreno[i][j - 1] = terreno[i][j];  // Mueve el zombie a la izquierda
                         terreno[i][j] = null;  // Limpia la posición anterior
                     } else if (terreno[i][j - 1] instanceof Planta) {
-                        // Si hay una planta en la izquierda, podrías implementar ataque o interacción
                         System.out.println("Zombie ataca a la planta en (" + i + ", " + (j - 1) + ")");
-                        // Aquí podrías reducir la vida de la planta o aplicar la lógica que quieras
                     }
                 }
             }
         }
+    }
+
+    // Obtener la entidad en una posición específica del tablero
+    public Object getEntidad(int fila, int columna) {
+        if (esPosicionValida(fila, columna)) {
+            return terreno[fila][columna];
+        }
+        return null;
+    }
+
+    // Eliminar una entidad del tablero (se usa cuando un zombie muere)
+    public void eliminarEntidad(int fila, int columna) {
+        if (esPosicionValida(fila, columna)) {
+            terreno[fila][columna] = null;
+            System.out.println("Entidad eliminada en (" + fila + ", " + columna + ")");
+        }
+    }
+
+    // Métodos para obtener el número de filas y columnas
+    public int getFilas() {
+        return filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
     }
 }
