@@ -8,6 +8,16 @@ public class Zombie {
     private String tipo;
     private static int numeroTotalZombies = 0;
 
+    // Constructor por defecto
+    public Zombie() {
+        this.nombre = "Zombie Común";
+        this.vida = 100;
+        this.damage = 10;
+        this.velocidad = 1;
+        this.tipo = "Común";
+        numeroTotalZombies++;
+    }
+
     // Constructor paramétrico
     public Zombie(String nombre, int vida, int damage, int velocidad, String tipo) {
         this.nombre = nombre;
@@ -18,68 +28,70 @@ public class Zombie {
         numeroTotalZombies++;
     }
 
-    // Constructor por defecto
-    public Zombie() {
-        this("Zombie común", 100, 10, 1, "Común");
-    }
-
     // Constructor copia
-    public Zombie(Zombie otroZombie) {
-        this(otroZombie.nombre, otroZombie.vida, otroZombie.damage, otroZombie.velocidad, otroZombie.tipo);
+    public Zombie(Zombie otro) {
+        this.nombre = otro.nombre;
+        this.vida = otro.vida;
+        this.damage = otro.damage;
+        this.velocidad = otro.velocidad;
+        this.tipo = otro.tipo;
+        numeroTotalZombies++;
     }
 
-    // Getters y setters
-    public String getNombre() {
-        return nombre;
-    }
-
+    // Métodos getters y setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getVida() {
-        return vida;
     }
 
     public void setVida(int vida) {
         this.vida = vida;
     }
 
-    public int getDamage() {
-        return damage;
-    }
-
     public void setDamage(int damage) {
         this.damage = damage;
-    }
-
-    public int getVelocidad() {
-        return velocidad;
     }
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    // Método para reducir la vida del zombie
-    public void reducirVida(int cantidad) {
-        this.vida -= cantidad;
-        System.out.println(nombre + " ha recibido " + cantidad + " de daño. Vida restante: " + vida);
+    public String getNombre() {
+        return nombre;
     }
 
-    public void mostrarInfo() {
-        System.out.println("Zombie: " + nombre + ", Vida: " + vida + ", Daño: " + damage + ", Velocidad: " + velocidad + ", Tipo: " + tipo);
+    public int getVida() {
+        return vida;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public static int getNumeroTotalZombies() {
         return numeroTotalZombies;
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + ", Vida: " + vida + ", Daño: " + damage + ", Velocidad: " + velocidad + ", Tipo: " + tipo);
+    }
+
+    // Método para reducir la vida del zombie
+    public void reducirVida(int damage) {
+        this.vida -= damage;
+        if (this.vida < 0) {
+            this.vida = 0;  // Asegurarse de que la vida no sea negativa
+        }
     }
 }
