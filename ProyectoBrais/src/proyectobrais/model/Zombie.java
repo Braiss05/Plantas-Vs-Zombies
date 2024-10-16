@@ -1,15 +1,13 @@
 package proyectobrais.model;
 
 public class Zombie {
-    
     private String nombre;
     private int vida;
     private int damage;
     private int velocidad;
-    private String tipo;  // Nuevo atributo tipo de zombie
-    
+    private String tipo;
     private static int numeroTotalZombies = 0;
-    
+
     // Constructor paramétrico
     public Zombie(String nombre, int vida, int damage, int velocidad, String tipo) {
         this.nombre = nombre;
@@ -17,20 +15,20 @@ public class Zombie {
         this.damage = damage;
         this.velocidad = velocidad;
         this.tipo = tipo;
-        numeroTotalZombies++;  // Incrementamos el contador al crear un nuevo zombie
+        numeroTotalZombies++;
     }
 
-    // Constructor por defecto 
+    // Constructor por defecto
     public Zombie() {
-        this("Zombie por defecto", 100, 10, 5, "Comun");  // Valores por defecto y tipo "Común"
+        this("Zombie común", 100, 10, 1, "Común");
     }
-    
-    // Constructor copia 
+
+    // Constructor copia
     public Zombie(Zombie otroZombie) {
         this(otroZombie.nombre, otroZombie.vida, otroZombie.damage, otroZombie.velocidad, otroZombie.tipo);
     }
-    
-    // Getters y Setters 
+
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -71,14 +69,17 @@ public class Zombie {
         this.tipo = tipo;
     }
 
-    // Método para obtener el número total de zombies creados
+    // Método para reducir la vida del zombie
+    public void reducirVida(int cantidad) {
+        this.vida -= cantidad;
+        System.out.println(nombre + " ha recibido " + cantidad + " de daño. Vida restante: " + vida);
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Zombie: " + nombre + ", Vida: " + vida + ", Daño: " + damage + ", Velocidad: " + velocidad + ", Tipo: " + tipo);
+    }
+
     public static int getNumeroTotalZombies() {
         return numeroTotalZombies;
-    }
-    
-    // Método para mostrar la información del zombie
-    public void mostrarInfo() {
-        System.out.println("Nombre: " + nombre + ", Vida: " + vida + ", Damage: " + damage + 
-                           ", Velocidad: " + velocidad + ", Tipo: " + tipo);
     }
 }
