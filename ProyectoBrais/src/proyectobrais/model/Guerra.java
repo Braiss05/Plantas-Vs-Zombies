@@ -29,7 +29,7 @@ public class Guerra {
                                     System.out.println(zombie.getNombre() + " ha sido derrotado.");
                                     tablero.eliminarEntidad(i, k);  // Eliminar el zombie del tablero
                                 }
-                                break;  // Salir del bucle una vez que el ataque se ha realizado
+                                break;  // Salir del bucle una vez que el ataque se ha realizado.
                             }
                         }
                     }
