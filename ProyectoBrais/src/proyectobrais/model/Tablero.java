@@ -60,7 +60,6 @@ public class Tablero {
 
     // Método para mover todos los zombies en el tablero hacia la izquierda
     public void moverZombies() {
-        // Iteramos desde la columna 1 hasta la última, moviendo los zombies hacia la izquierda
         for (int i = 0; i < filas; i++) {
             for (int j = 1; j < columnas; j++) {  // Empezamos desde la segunda columna
                 if (terreno[i][j] instanceof Zombie) {
@@ -68,9 +67,7 @@ public class Tablero {
                         terreno[i][j - 1] = terreno[i][j];  // Mueve el zombie a la izquierda
                         terreno[i][j] = null;  // Limpia la posición anterior
                     } else if (terreno[i][j - 1] instanceof Planta) {
-                        // Si hay una planta en la izquierda, el zombie ataca
                         System.out.println("Zombie ataca a la planta en (" + i + ", " + (j - 1) + ")");
-                        // Aquí podrías reducir la vida de la planta o aplicar la lógica que quieras
                     }
                 }
             }
@@ -93,8 +90,7 @@ public class Tablero {
         }
     }
 
-    // Metodos set y get para qu pueda funcionar la clae guerra
-    
+    // Métodos para obtener el número de filas y columnas
     public int getFilas() {
         return filas;
     }
